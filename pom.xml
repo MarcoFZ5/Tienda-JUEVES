@@ -14,7 +14,7 @@
 	<name>Tienda</name>
 	<description>Proyecto Curso Desarrollo Web J(6 9)</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>18</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
