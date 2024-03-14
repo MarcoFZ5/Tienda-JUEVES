@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<!--
--->
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-       
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>TechShop</title>      
-    </head>
-       
-    <body>
-         <header th:replace="~{layout/plantilla :: header}"/>
-         
-         <section th:replace="~{categoria/fragmentos :: editarCategoria}"/>
-         
-        <footer th:replace="~{layout/plantilla :: footer}"/>
-    </body>
+<head th:replace="~{layout/plantilla :: head}">
+    <title>Modificar Bicicleta - TechShop</title>
+</head>
+<body>
+<header th:replace="~{layout/plantilla :: header}"/>
+
+<section th:replace="~{fragmentos :: editarCategoria}" th:with="categoria=${tu_bicicleta}"/>
+
+<footer th:replace="~{layout/plantilla :: footer}"/>
+</body>
 </html>
