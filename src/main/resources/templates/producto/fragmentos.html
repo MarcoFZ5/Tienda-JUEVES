@@ -15,7 +15,7 @@
                             type="button" 
                             class="btn btn-primary btn-block" 
                             data-bs-toggle="modal" 
-                            data-bs-target="#agregarPoducto">
+                            data-bs-target="#agregarProducto">
                             <i class="fas fa-plus"></i> [[#{producto.agregar}]]
                         </button>
                     </div>
@@ -24,8 +24,8 @@
         </section>
 
         <!-- 2 Fragmento para agregar producto, es la ventana modal -->
-        <section th:fragment="agregarPoducto">
-            <div id="agregarPoducto" 
+        <section th:fragment="agregarProducto">
+            <div id="agregarProducto" 
                  class="modal fade" 
                  tabindex="-1" 
                  aria-labelledby="exampleModalLabel" 
@@ -46,8 +46,8 @@
                                 
                                 <div class="mb-3">
                                     <label for="categoria">[[#{producto.categoria}]]</label>
-                                    <select class="form-select" aria-label="Default select example" name = "idCategoria" required="true">
-                                        <option th:each="categoria : ${categorias]" th:value="${categoria.idCategoria}" >[[${categoria.descripcion}]]</option>
+                                    <select class="form-select" aria-label="Default select example" name = "categoria" required="true">
+                                        <option th:each="categoria : ${categorias]" th:value="${categoria.categoria}" >[[${categoria.descripcion}]]</option>
                                         
                                     </select>
                                 </div>
@@ -116,10 +116,10 @@
                                             <td>[[${producto.existencias}]]</td>
                                             <td>[[${producto.precio*producto.existencias}]]</td>
                                             <td th:text="${producto.activo} ? 'Activa' : 'Inactiva'" />
-                                            <td><a th:href="@{/producto/eliminar/}+${producto.idPoducto}"
+                                            <td><a th:href="@{/producto/eliminar/}+${producto.idProducto}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
-                                                <a th:href="@{/producto/modifica/}+${producto.idPoducto}"
+                                                <a th:href="@{/producto/modifica/}+${producto.idProducto}"
                                                    class="btn btn-success">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
                                     </tbody>
@@ -143,7 +143,7 @@
         </section>
 
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
-        <section th:fragment="editarPoducto">
+        <section th:fragment="editarProducto">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
@@ -152,7 +152,7 @@
                           th:object="${producto}"
                           class="was-validated"                          
                           enctype="multipart/form-data">
-                        <input type="hidden" name="idPoducto" th:field="*{idPoducto}"/>
+                        <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
                         <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
                         <section th:replace="~{producto/fragmentos :: botonesEditar}"/>
                         <div id=details>
@@ -167,8 +167,8 @@
                                                 
                                                 <div class="mb-3">
                                                     <label for="categoria">[[#{producto.categoria}]]</label>
-                                                    <select class="form-select" aria-label="Default select example" th:field="*{idCategoria}" name="idCategoria" required="true">                                        
-                                                        <option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}">[[${categoria.descripcion}]]</option>
+                                                    <select class="form-select" aria-label="Default select example" th:field="*{categoria}" name="categoria" required="true">                                        
+                                                        <option th:each="categoria : ${categorias}" th:value="${categoria.categoria}">[[${categoria.descripcion}]]</option>
                                                     </select>
                                                 </div>
                                                 
@@ -243,7 +243,7 @@
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">                                
-                        <a th:href="@{/producto/eliminar/}+${producto.idPoducto}"
+                        <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
                            class="btn btn-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
